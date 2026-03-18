@@ -1,0 +1,34 @@
+MegaBOT v1.2
+Esta fue la primera de las versiones, nacida de la necesidad de controlar
+nuestros canales de IRC-Hispano y dado que los BOT's que existían no nos
+ofrecían lo que nosotros demandábamos, tomamos la decisión de hacernos
+nuestra propia versión, trabajamos un tiempo en la 1.0, paramos y volvimos
+con nuevas ideas, así durante unos cuantos meses, cuando se terminó, ya
+era la 1.2 pero no publica, ya que hera para uso personal, aunque algunos
+usuarios, nos la pedían para gestionar sus canales y nosotros, encantados
+se la cedíamos.
+Aquí comenzó la historia de MegaBOT
+
+MegaBOT v2.5
+Esta versión no llegó a ser terminada, por la sencilla razón de un nuevo
+planteamiento que nos hizo restructurar todo el código fuente y darle una
+nueva apariencia, por lo que al ser una versión no funcional y no terminada,
+no esta disponible para descargar.
+
+MegaBOT v3.5
+Nacio en sustitución de la v2.5 con las ganas de intentar hacer algo distinto y
+funcional para todos los usuarios de IRC hispano, ya que era la red que mas
+utilizábamos, también fue el primer bot con ventanas en grafico.
+
+MegaBOT v3.6
+Tras compartir la versión 3.5 con los amigos mas cercanos del IRC Hispano en los
+canales que frecuentábamos y recibir buenas criticas, decidimos liberar dicha
+versión en la actual pagina web de www.maincenter.ya.st y tras unos meses de
+buenas criticas y nuevas ideas, decidimos realizar la versión 3.6
+
+MegaBOT v3.7
+Esta versión, no fue muy bien acogida, dado los innumerables cambios
+y las innumerables mejoras, también coincidió con una época de bajón en el
+IRC-Hispano (que aún dura) tras un tiempo, los usuarios fueron probando la versión
+y notaron que realmente era mejor y en la actualidad, es la última realizada con mas
+de 30 actualizaciones, ya que una de las grandes mejoras, era esta, poder actualizarse.
