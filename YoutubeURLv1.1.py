@@ -7,8 +7,7 @@
 #
 # Aplicación para descargar vídeos y audio de YouTube
 # con soporte para múltiples formatos, calidad máxima,
-# miniatura, historial, progreso detallado y FFmpeg local.
-# Soporta corte desde un segundo inicial si la URL contiene ?t= o &t=
+# miniatura, historial, progreso detallado y FFmpeg local
 # ------------------------------------------------------------
 
 import os
