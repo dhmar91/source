@@ -589,7 +589,7 @@ Func GetFilesS($sFilePath,$t,$t2,$siz)
 	  $tr = TimerInit()
 	  Return
    EndIf
-   Local $hFileFind = FileFindFirstFile($sFilePath & '*'), $tt, $g, $calc, $cat, $g, $porc, $pst, $atime, $atimec, $diram, $rn, $dirtot, $g2, $s, $ttt, $acc, $fsf, $atimedisparo
+   Local $hFileFind = FileFindFirstFile($sFilePath & '*'), $tt, $g, $calc, $cat, $g, $porc, $pst, $atime, $atimec, $diram, $rn, $dirtot, $g2, $s, $ttt, $acc, $fsf, $atimedisparo, $getinfotemp
    if $mover Then
 		 $acc = "Moviendo"
 	  Else
@@ -658,15 +658,16 @@ Func GetFilesS($sFilePath,$t,$t2,$siz)
 	  ;Fecha creación
 	  $atimec = FileGetTime($dirtot,1)
 	  ;Fecha disparo (DateTimeOriginal)
-	  $atimedisparo = _ImageGetInfo($dirtot)
+	  $getinfotemp = _ImageGetInfo($dirtot)
+	  $atimedisparo = ""
+	  ;Cogemos la fecha real de disparo si existe y comprobamos que el valor correcto por seguridad
+	  local $temp = StringInStr($getinfotemp,'DateTimeOriginal=')
+	  if $temp Then $atimedisparo = StringMid(gettok(StringReplace(StringMid($getinfotemp,$temp),':','/'),1,32),18)
 
-	  local $split = StringSplit($atimedisparo,@CRLF)
-	  ;Cogemos la fecha real de disparo si existe y comprobamos que el valor del split sea el correcto por seguridad
-	  if UBound($split) >= 9 And StringLeft($split[9],17) = 'DateTimeOriginal=' and _DateIsValid(StringReplace(gettok(StringMid($split[9],18),1,32),':','/')) Then
-		 ;Cogemos solo la fecha (Entrada: 2022:10:23 15:13:40 Salida: 2022\10\23)
-		 $atime = StringReplace(gettok(StringMid($split[9],18),1,32),':','\')
+	  if $atimedisparo And _DateIsValid(gettok($atimedisparo,1,32)) Then
 		 ;Declaramos y normalizamos el nuevo split con los datos de la fecha del disparo
-		 $atime = StringSplit($atime,'\',2)
+		 $atime = StringSplit($atimedisparo,'/',2)
+		 redim $atime[6]
 	  Else
 		 ;Si la fecha de creación es más grande que la de modificación, le pasamos $atime la fecha de creación
 		 if _DateDiff('d',$atimec[0] & "/" & $atimec[1] & "/" & $atimec[2],$atime[0] & "/" & $atime[1] & "/" & $atime[2]) > 0 Then $atime = $atimec
