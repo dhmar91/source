@@ -51,8 +51,8 @@ ctk.set_default_color_theme("blue")
 #     PyInstaller descomprime los recursos incluidos
 #     temporalmente en una carpeta _MEIxxxxxx.
 #
-# Los recursos incluidos en el EXE, como FFmpeg, deben
-# buscarse en esa carpeta temporal.
+# Los recursos incluidos en el EXE, como FFmpeg y Deno,
+# deben buscarse en esa carpeta temporal.
 #
 # Los archivos de configuración del usuario, en cambio,
 # deben guardarse junto al EXE para que permanezcan entre
@@ -71,9 +71,10 @@ if getattr(
     # --------------------------------------------------------
     #
     # Aquí se encuentran los archivos incluidos mediante
-    # --add-data, por ejemplo:
+    # --add-data / --add-binary, por ejemplo:
     #
     # _MEIxxxxxx\ffmpeg\
+    # _MEIxxxxxx\deno\
     #
 
     RESOURCE_DIR = (
@@ -137,6 +138,30 @@ BASE_DIR = APP_DIR
 FFMPEG_LOCATION = os.path.join(
     RESOURCE_DIR,
     "ffmpeg"
+)
+
+
+# ------------------------------------------------------------
+# DENO
+# ------------------------------------------------------------
+#
+# Deno se incluye dentro del EXE mediante:
+#
+# --add-binary "deno\deno.exe;deno"
+#
+# Cuando PyInstaller ejecuta el EXE --onefile,
+# deno.exe estará disponible en:
+#
+# _MEIxxxxxx\deno\deno.exe
+#
+# yt-dlp necesita este runtime JavaScript para resolver
+# los desafíos actuales de YouTube.
+#
+
+DENO_EXE = os.path.join(
+    RESOURCE_DIR,
+    "deno",
+    "deno.exe"
 )
 
 
@@ -2108,12 +2133,31 @@ class YouTubeDownloaderApp(
         try:
 
             opts = {
+
                 "quiet": True,
+
                 "skip_download": True,
+
                 "ffmpeg_location":
                     FFMPEG_LOCATION,
+
+                # ------------------------------------------------
+                # DENO / EJS
+                # ------------------------------------------------
+                #
+                # Se utiliza el Deno incluido en el EXE.
+                #
+
+                "js_runtimes": {
+                    "deno": {
+                        "path": DENO_EXE
+                    }
+                },
+
                 "socket_timeout": 30,
+
                 "retries": 3,
+
                 "extractor_retries": 3,
             }
 
@@ -2666,6 +2710,19 @@ class YouTubeDownloaderApp(
             "ffmpeg_location":
                 FFMPEG_LOCATION,
 
+            # ------------------------------------------------
+            # DENO / EJS
+            # ------------------------------------------------
+            #
+            # Se utiliza el Deno incluido en el EXE.
+            #
+
+            "js_runtimes": {
+                "deno": {
+                    "path": DENO_EXE
+                }
+            },
+
             "socket_timeout": 30,
 
             "retries": 10,
@@ -3064,6 +3121,19 @@ class YouTubeDownloaderApp(
 
                 "ffmpeg_location":
                     FFMPEG_LOCATION,
+
+                # ------------------------------------------------
+                # DENO / EJS
+                # ------------------------------------------------
+                #
+                # Se utiliza el Deno incluido en el EXE.
+                #
+
+                "js_runtimes": {
+                    "deno": {
+                        "path": DENO_EXE
+                    }
+                },
 
                 "socket_timeout": 30,
 
