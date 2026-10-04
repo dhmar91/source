@@ -194,10 +194,10 @@ Func escribeimagen($textocancion,$artista,$textocancion2,$artista2,$textocancion
    	escribetextimg($artista2,665,345,$globalgrosor)
 	$globalgrosor = 32
 	escribetextimg($textocancion3,1295,270,$globalgrosor)
-    	escribetextimg($artista3,1295,345,$globalgrosor)
+    escribetextimg($artista3,1295,345,$globalgrosor)
 	$globalgrosor = 32
   	escribetextimg($textocancion4,30,690,$globalgrosor)
-    	escribetextimg($artista4,30,765,$globalgrosor)
+    escribetextimg($artista4,30,765,$globalgrosor)
 	$globalgrosor = 32
 	escribetextimg($textocancion5,665,690,$globalgrosor)
    	escribetextimg($artista5,665,765,$globalgrosor)
