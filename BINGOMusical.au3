@@ -243,11 +243,11 @@ EndFunc
 
 ;GENERAMOS LOS CARTONES.. COMBINACIONES
 Func genera()
-        GUICtrlSetPos($VENTANAProgress, 10, 90, 0, 20)
+    GUICtrlSetPos($VENTANAProgress, 10, 90, 0, 20)
 	GUICtrlSetData($VENTANAProgressLabel, 'Generado 0 de ' & $generacartonestotal & ' cartones (0%)')
 
-        GUICtrlSetState($VENTANAProgress,$GUI_SHOW)
-        GUICtrlSetState($VENTANAProgressLabel,$GUI_SHOW)
+    GUICtrlSetState($VENTANAProgress,$GUI_SHOW)
+    GUICtrlSetState($VENTANAProgressLabel,$GUI_SHOW)
       
 	hf("dupli")
 	hm("dupli")
